@@ -32,6 +32,7 @@ module LazyHighCharts
         options = { #{options_collection.join(',')} };
         #{capture(&block) if block_given?}
         chart = new Highcharts.#{type}(options);
+        window.chart = chart;
       EOJS
 
       if defined?(request) && request.respond_to?(:xhr?) && request.xhr?
